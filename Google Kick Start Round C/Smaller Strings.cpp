@@ -19,14 +19,21 @@ typedef map<ll, ll> ml;
 ll n, k;
 string s;
 
-ll dp[100005][2][2];
+ll dp[100005][2][2];                        // Dp for memoization
 
-ll solve(ll i, ll j, ll val1, ll val2)
+// Here val1 and val2 are as follows
+// val1 == 0 if the character at the place of first pointer will be smaller than the present one
+// val1 == 1 if the character at the place of first pointer will be eqaul or greater than the present one
+
+// val2 == 0 if the character at the place of second pointer will be smaller than the present one
+// val2 == 1 if the character at the place of second pointer will be eqaul or greater than the present one
+
+ll solve(ll i, ll j, ll val1, ll val2)      
 {
-    if (i > j)
+    if (i > j)                              // Base cases
     {
 
-        if (val1 == 0)
+        if (val1 == 0)                     
         {
             return 1;
         }
