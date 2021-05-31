@@ -47,7 +47,7 @@ ll solve(ll i, ll j, ll val1, ll val2)
         }
     }
 
-    if (dp[i][val1][val2] != -1)
+    if (dp[i][val1][val2] != -1)                // Just memoization
     {
         return dp[i][val1][val2];
     }
@@ -58,31 +58,31 @@ ll solve(ll i, ll j, ll val1, ll val2)
     ll it = 0;
     ll ans = 0;
 
-    for (it = 0; it < k; it++)
+    for (it = 0; it < k; it++)                 // We will iterate through all the characters
     {
-        if (val1 == 0)
+        if (val1 == 0)                         // If the val1 is 0 it means we already have a smaller character infront so now we can have any character
         {
             ans += solve(i + 1, j - 1, 0, 0);
         }
         else
         {
-            if (it < ch1)
+            if (it < ch1)                       // Else if it is less than ch1 then val1 will become zero and val2 doesn't matter
             {
                 ans += solve(i + 1, j - 1, 0, 0);
             }
-            else if (it == ch1)
+            else if (it == ch1)                 // If it been equal to ch1 then 
             {
-                if (i != j)
+                if (i != j)                     // Now we will be checking ch2
                 {
-                    if (it > ch2)
+                    if (it > ch2)              // if it is greater than ch2 then val2 will become 1 and val1 is already 1
                     {
                         ans += solve(i + 1, j - 1, 1, 1);
                     }
-                    else if (it == ch2)
+                    else if (it == ch2)        // If it is equal then val2 will remain as it is
                     {
                         ans += solve(i + 1, j - 1, 1, val2);
                     }
-                    else if (it < ch2)
+                    else if (it < ch2)         // Else val2 will become zero
                     {
                         ans += solve(i + 1, j - 1, 1, 0);
                     }
